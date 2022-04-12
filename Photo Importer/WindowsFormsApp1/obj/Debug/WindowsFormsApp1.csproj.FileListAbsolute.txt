@@ -1,0 +1,10 @@
+A:\antoi\Documents\GitHub\photo-importer\Photo Importer\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+A:\antoi\Documents\GitHub\photo-importer\Photo Importer\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+A:\antoi\Documents\GitHub\photo-importer\Photo Importer\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+A:\antoi\Documents\GitHub\photo-importer\Photo Importer\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
+A:\antoi\Documents\GitHub\photo-importer\Photo Importer\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+A:\antoi\Documents\GitHub\photo-importer\Photo Importer\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+A:\antoi\Documents\GitHub\photo-importer\Photo Importer\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+A:\antoi\Documents\GitHub\photo-importer\Photo Importer\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+A:\antoi\Documents\GitHub\photo-importer\Photo Importer\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+A:\antoi\Documents\GitHub\photo-importer\Photo Importer\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ImportForm.resources
