@@ -78,7 +78,7 @@ namespace WindowsFormsApp1
             foreach (var sourceFile in photosToImport)
             {
                 DateTime dateTaken = getDateTakenFromMedia(sourceFile);
-                string dateDirectoryName = Path.Combine(destination, dateTaken.ToString("yyyy_MM_dd"));
+                string dateDirectoryName = Path.Combine(destination, dateTaken.ToString("yyyy-MM-dd"));
                 Directory.CreateDirectory(dateDirectoryName);
                 // Check if file already exists
                 string destinationFile = Path.Combine(dateDirectoryName, Path.GetFileName(sourceFile));
