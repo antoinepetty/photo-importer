@@ -40,6 +40,7 @@
             this.importDatePicker = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.destinationFolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.statusLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // sourceFolderBrowserDialog
@@ -131,11 +132,21 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Earliest import date";
             // 
+            // statusLabel
+            // 
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Location = new System.Drawing.Point(12, 178);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(100, 13);
+            this.statusLabel.TabIndex = 10;
+            this.statusLabel.Text = "Press Import to start";
+            // 
             // ImportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(493, 186);
+            this.ClientSize = new System.Drawing.Size(493, 200);
+            this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.importDatePicker);
             this.Controls.Add(this.destBrowse);
@@ -167,6 +178,7 @@
         private System.Windows.Forms.DateTimePicker importDatePicker;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.FolderBrowserDialog destinationFolderBrowserDialog;
+        private System.Windows.Forms.Label statusLabel;
     }
 }
 

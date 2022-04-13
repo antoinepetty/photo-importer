@@ -47,17 +47,53 @@ namespace WindowsFormsApp1
 
         private void copyFiles(string source, string destination)
         {
+            // Prevent the GUI from freezing
+            Application.DoEvents();
+            statusLabel.Text = "Searching source directory...";
+
+            // Make list of photos to import
             string[] allFiles = Directory.GetFiles(source, "*.*", SearchOption.AllDirectories);
+            List<string> photosToImport = new List<string>();
             foreach (var file in allFiles)
             {
                 DateTime dateTaken = GetDateTakenFromImage(file);
-                if (dateTaken > importDatePicker.Value)
+                if (dateTaken > importDatePicker.Value.Date)
                 {
                     System.Diagnostics.Debug.WriteLine(file);
+                    photosToImport.Add(file);
                 }
-               
             }
+
+            // Copy files
+            progressBar.Style = ProgressBarStyle.Continuous;
+            progressBar.Maximum = photosToImport.Count;
+            progressBar.Value = 0;
+            foreach (var sourceFile in photosToImport)
+            {
+                DateTime dateTaken = GetDateTakenFromImage(sourceFile);
+                string dateDirectoryName = Path.Combine(destination, dateTaken.ToString("yyyy_MM_dd"));
+                Directory.CreateDirectory(dateDirectoryName);
+                // Check if file already exists
+                string destinationFile = Path.Combine(dateDirectoryName, Path.GetFileName(sourceFile));
+                // Copy files
+                if (!File.Exists(destinationFile))
+                {
+                    statusLabel.Text = string.Format("Moving {0} to {1}", sourceFile, destinationFile);
+                    File.Copy(sourceFile, destinationFile);
+                }
+                else
+                {
+                    statusLabel.Text = string.Format("{0} already exists", destinationFile);
+                }
+                // Prevent the GUI from freezing
+                Application.DoEvents();
+                progressBar.Value++;
+            }
+            statusLabel.Text = "Done :)";
         }
+
+
+        // Below code is from https://stackoverflow.com/a/7713780
 
         //we init this once so that if the function is repeatedly called
         //it isn't stressing the garbage man
