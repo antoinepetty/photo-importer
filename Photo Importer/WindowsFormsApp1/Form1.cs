@@ -47,21 +47,28 @@ namespace WindowsFormsApp1
 
         private void copyFiles(string source, string destination)
         {
+            
+            statusLabel.Text = "Searching source directory...";
             // Prevent the GUI from freezing
             Application.DoEvents();
-            statusLabel.Text = "Searching source directory...";
+            progressBar.Style = ProgressBarStyle.Marquee;
 
             // Make list of photos to import
             string[] allFiles = Directory.GetFiles(source, "*.*", SearchOption.AllDirectories);
             List<string> photosToImport = new List<string>();
             foreach (var file in allFiles)
             {
-                DateTime dateTaken = GetDateTakenFromImage(file);
-                if (dateTaken > importDatePicker.Value.Date)
+                DateTime dateTaken;
+
+                dateTaken = getDateTakenFromMedia(file);
+
+                if (dateTaken >= importDatePicker.Value.Date)
                 {
                     System.Diagnostics.Debug.WriteLine(file);
                     photosToImport.Add(file);
                 }
+                // Prevent the GUI from freezing
+                Application.DoEvents();
             }
 
             // Copy files
@@ -70,7 +77,7 @@ namespace WindowsFormsApp1
             progressBar.Value = 0;
             foreach (var sourceFile in photosToImport)
             {
-                DateTime dateTaken = GetDateTakenFromImage(sourceFile);
+                DateTime dateTaken = getDateTakenFromMedia(sourceFile);
                 string dateDirectoryName = Path.Combine(destination, dateTaken.ToString("yyyy_MM_dd"));
                 Directory.CreateDirectory(dateDirectoryName);
                 // Check if file already exists
@@ -93,10 +100,25 @@ namespace WindowsFormsApp1
         }
 
 
+        public static DateTime getDateTakenFromMedia(string path)
+        {
+            DateTime dateTaken;
+            try
+            {
+                dateTaken = GetDateTakenFromImage(path);
+            }
+            catch
+            {
+                dateTaken = File.GetCreationTime(path);
+            }
+            return dateTaken;
+        }
+
+
         // Below code is from https://stackoverflow.com/a/7713780
 
-        //we init this once so that if the function is repeatedly called
-        //it isn't stressing the garbage man
+            //we init this once so that if the function is repeatedly called
+            //it isn't stressing the garbage man
         private static Regex r = new Regex(":");
 
         //retrieves the datetime WITHOUT loading the whole image
