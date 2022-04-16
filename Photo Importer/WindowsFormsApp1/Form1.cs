@@ -67,6 +67,7 @@ namespace WindowsFormsApp1
                     System.Diagnostics.Debug.WriteLine(file);
                     photosToImport.Add(file);
                 }
+                statusLabel.Text = string.Format("Searching... Found {0} files since specified date", photosToImport.Count);
                 // Prevent the GUI from freezing
                 Application.DoEvents();
             }
